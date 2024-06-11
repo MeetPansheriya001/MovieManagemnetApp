@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>This is index.html</title>
+    <style>
+        body {
+            text-align: center;
+            background-color: #1a1a1a;
+            color: #fff;
+            font-family: 'Arial', sans-serif;
+        }
+
+        h1 {
+            font-family: 'Cursive', cursive;
+            color: #61dafb;
+        }
+
+        table, th, td {
+            border: 1px solid #61dafb;
+            border-collapse: collapse;
+            width: 60%;
+            margin: 20px auto;
+            background-color: #333;
+            color: #fff;
+            box-shadow: 8px 8px 5px rgba(10, 10, 10, 0.5);
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+
+        form {
+            display: inline-block;
+            text-align: left;
+            border: 2px solid #fff;
+            margin: 20px 10px;
+            padding: 10px;
+            width: 200px;
+            background-color: #222;
+            color: lime;
+            box-shadow: 18px 18px 5px rgba(17, 24, 39, 0.5);
+        }
+
+        input {
+            background-color: #444;
+            color: #fff;
+            padding: 8px;
+            margin: 5px 0;
+            border: 1px solid #61dafb;
+        }
+
+        #goahead:hover {
+            cursor: pointer;
+            font-size: large;
+            background-color: #333;
+            color: #61dafb;
+        }
+
+        a {
+            color: #61dafb;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body><h1>This is index.html</h1>
+
+    <div th:if="${movieList != null and movieList.size() > 0}">
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Genre</th>
+                <th>Release Year</th>
+            </tr>
+            <tr th:each="m : ${movieList}">
+                <td th:text="${m.name}">Movie</td>
+                <td th:text="${m.genre}">Movie Genre</td>
+                <td th:text="${m.releaseYear}">Movie Release Year</td>
+            </tr>
+        </table>
+    </div>
+
+    <br><hr><br>
+
+    <form method="post" th:action="@{/insertMovie}" th:object="${movie}">
+        <input type="hidden" name="id" th:field="*{id}">
+        Name: <input type="text" name="name" th:field="*{name}"><br>
+        Genre: <input type="text" name="genre" th:field="*{genre}"><br>
+        Release Year: <input type="number" name="releaseYear" th:field="*{releaseYear}"><br>
+        <input type="submit" id="goahead" value="Save Movie!">
+        <br><br>
+        <a th:href="@{/displayByYearForm}">Display as per release year</a>
+    </form>
+</body>
+</html>

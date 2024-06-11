@@ -1,0 +1,66 @@
+	<!DOCTYPE html>
+	<html lang="en">
+	<head>
+	    <meta charset="UTF-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	    <title>Enter Release Year</title>
+	    <style>
+	        body {
+	            text-align: center;
+	            background-color: #818cfc;
+	            color: #fff;
+	            font-family: 'Arial', sans-serif;
+	        }
+	
+	        h1 {
+	            font-family: 'Cursive', cursive;
+	            color: #61dafb;
+	        }
+	
+	        form {
+	            display: inline-block;
+	            text-align: left;
+	            border: 2px solid #fff;
+	            margin: 0.5rem 0.5rem 2rem 1rem;
+	            padding: 0.5rem;
+	            height: 150px;
+	            width: 180px;
+	            background-color: #222;
+	            color: lime;
+	            box-shadow: 18px 18px 5px rgba(17, 24, 39, 0.5);
+	        }
+	
+	        input {
+	            background-color: #444;
+	            color: #fff;
+	            padding: 8px;
+	            margin: 5px 0;
+	            border: 1px solid #61dafb;
+	        }
+	
+	        #goahead:hover {
+	            cursor: pointer;
+	            font-size: large;
+	            background-color: #333;
+	            color: #61dafb;
+	        }
+	
+	        a {
+	            color: lime;
+	            text-decoration: none;
+	        }
+	
+	        a:hover {
+	            text-decoration: underline;
+	        }
+	    </style>
+	</head>
+	<body>
+	    <h1>Enter Release Year</h1>
+
+    <form method="post" th:action="@{/displayByYearForm}">
+        Release Year: <input type="number" name="releaseYear" required>
+        <input type="submit" id="goahead" value="Submit">
+    </form>
+	</body>
+	</html>
